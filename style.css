@@ -3,15 +3,14 @@
 }
 .container {
   border: black solid 1px;
-  width: 400px;
-  height: 400px;
+  width: 600px;
+  height: 600px;
 }
 .row {
   display: flex;
 }
 .gridSquare {
   border: #444242 solid 1px;
-  /* margin: auto; */
 }
 
 .squareBlack {

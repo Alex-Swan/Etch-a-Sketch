@@ -1,11 +1,13 @@
 const container = document.querySelector(".container");
 const gridSquare = document.getElementsByClassName("gridSquare");
-const clearBTN = document.querySelector(".clearBTN");
+const clearBTN = document.querySelector("#clearBTN");
+const changeGridBTN = document.querySelector("#changeGridBTN");
 let squareAmount = 16;
 let userAmount;
 
-/* This function creates 16x16 grid or what ever input the user has given, the event listner at the
+/* This function creates 16x16 grid or what ever input the user has given, the event listener at the
  bottom of the function makes it that when a user hovers over a grid square it turns black. 
+ The whole grid also stays the same size no mater how many grid squares there are inputted by user. 
 */
 function fullGrid(e) {
   for (let i = 0; i < e; i++) {
@@ -17,7 +19,7 @@ function fullGrid(e) {
       row.appendChild(square);
       square.className = "gridSquare";
       square.style.width = "100%";
-      let height = 400 / parseInt(squareAmount);
+      let height = 600 / parseInt(squareAmount);
       square.style.height = `${height}px`;
     }
   }
@@ -28,12 +30,20 @@ function fullGrid(e) {
   }
 }
 
-/* This event lister the the clear button clears all drawing on the grid and asks the user how big the grid
+/* This event listener clears the whole grid when the button has been clicked letting the user start again.
+ */
+clearBTN.addEventListener("click", () => {
+  for (let i = 0; i < gridSquare.length; i++) {
+    gridSquare[i].classList.remove("squareBlack");
+  }
+});
+
+/* This event listener clears all drawing on the grid and asks the user how big the grid
  that they want should be. If user enters a number below 4 or above 100 it sends another prompt asking
  the user to select a number between 4 and 100. This also removes the original grid and replaces it
  with the users desired size.
-*/
-clearBTN.addEventListener("click", () => {
+ */
+changeGridBTN.addEventListener("click", () => {
   for (let i = 0; i < gridSquare.length; i++) {
     gridSquare[i].classList.remove("squareBlack");
   }
