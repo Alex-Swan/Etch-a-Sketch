@@ -16,6 +16,9 @@ function fullGrid(e) {
       square = document.createElement("DIV");
       row.appendChild(square);
       square.className = "gridSquare";
+      square.style.width = "100%";
+      let height = 400 / parseInt(squareAmount);
+      square.style.height = `${height}px`;
     }
   }
   for (let i = 0; i < gridSquare.length; i++) {
@@ -37,10 +40,13 @@ clearBTN.addEventListener("click", () => {
   userAmount = prompt(
     "The current grid is 16x16, what number of square x square would you like?"
   );
+  if (userAmount == "") {
+    userAmount = 16;
+  }
   while (parseInt(userAmount) < 4 || parseInt(userAmount) > 100) {
     userAmount = prompt(
-      `Please choose a number between 4 and 100. 
-    The current grid is 16x16, what number of square x square would you like?`
+      `Please enter a number between 4 and 100.
+The current grid is 16x16, what number of square x square would you like?`
     );
   }
   squareAmount = parseInt(userAmount);
