@@ -1,10 +1,24 @@
 * {
   box-sizing: border-box;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  background-color: rgb(238, 255, 230);
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .container {
   border: black solid 1px;
   width: 600px;
   height: 600px;
+  margin-bottom: 1rem;
 }
 .row {
   display: flex;
@@ -13,6 +27,17 @@
   border: #444242 solid 1px;
 }
 
-.squareBlack {
-  background-color: black;
+.btnDiv {
+  padding-bottom: 4em;
+}
+
+.btn {
+  margin: 2rem;
+  border-radius: 6px;
+  font-size: 1.5rem;
+  width: 10em;
+}
+
+.btn:hover {
+  background-color: rgb(219, 235, 211);
 }

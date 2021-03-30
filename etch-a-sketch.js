@@ -2,6 +2,9 @@ const container = document.querySelector(".container");
 const gridSquare = document.getElementsByClassName("gridSquare");
 const clearBTN = document.querySelector("#clearBTN");
 const changeGridBTN = document.querySelector("#changeGridBTN");
+const colorBlackBTN = document.querySelector("#colorBlackBTN");
+const colorRandomBTN = document.querySelector("#colorRandomBTN");
+const colorEraseBTN = document.querySelector("#colorEraseBTN");
 let squareAmount = 16;
 let userAmount;
 
@@ -21,20 +24,34 @@ function fullGrid(e) {
       square.style.width = "100%";
       let height = 600 / parseInt(squareAmount);
       square.style.height = `${height}px`;
+      square.style.backgroundColor = "rgb(255,255,255)";
     }
   }
+
   for (let i = 0; i < gridSquare.length; i++) {
     gridSquare[i].addEventListener("mouseover", () => {
-      gridSquare[i].className += " squareBlack";
+      gridSquare[i].style.backgroundColor = `${randomColorNumber()}`;
     });
   }
 }
 
-/* This event listener clears the whole grid when the button has been clicked letting the user start again.
+/*
+This function creates a random RGB value, when called returns a string for example "rgb(23,54,160)"
+*/
+function randomColorNumber() {
+  let r = Math.floor(Math.random() * 255) + 1;
+  let g = Math.floor(Math.random() * 255) + 1;
+  let b = Math.floor(Math.random() * 255) + 1;
+  let randomRGB = `rgb(${r},${g},${b})`;
+  return randomRGB;
+}
+
+/* This event listener clears the whole grid when the button has been clicked letting the user start again,
+by setting the background color of all grid squares white.
  */
 clearBTN.addEventListener("click", () => {
   for (let i = 0; i < gridSquare.length; i++) {
-    gridSquare[i].classList.remove("squareBlack");
+    gridSquare[i].style.backgroundColor = "white";
   }
 });
 
@@ -44,9 +61,6 @@ clearBTN.addEventListener("click", () => {
  with the users desired size.
  */
 changeGridBTN.addEventListener("click", () => {
-  for (let i = 0; i < gridSquare.length; i++) {
-    gridSquare[i].classList.remove("squareBlack");
-  }
   userAmount = prompt(
     "The current grid is 16x16, what number of square x square would you like?"
   );
