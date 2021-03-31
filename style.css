@@ -16,8 +16,8 @@ h1 {
 }
 .container {
   border: black solid 1px;
-  width: 600px;
-  height: 600px;
+  min-width: 600px;
+  min-height: 600px;
   margin-bottom: 1rem;
 }
 .row {
@@ -36,8 +36,43 @@ h1 {
   border-radius: 6px;
   font-size: 1.5rem;
   width: 10em;
+  white-space: nowrap;
 }
 
 .btn:hover {
   background-color: rgb(219, 235, 211);
+}
+
+@media screen and (max-width: 1200px) {
+  .btn {
+    margin: 1rem;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .btnDiv {
+    padding-bottom: 1rem;
+  }
+  .btn {
+    margin: 0.5rem;
+    width: 7em;
+  }
+  .bottomBTN {
+    height: 4em;
+    margin: 0.5rem 3rem;
+  }
+}
+
+@media screen and (max-width: 812px) {
+  .btnDiv {
+    padding-bottom: 0rem;
+  }
+  .btn {
+    margin: 0.5rem;
+    width: 7em;
+  }
+  .bottomBTN {
+    height: 4em;
+    margin: 0.5rem 3rem;
+  }
 }
