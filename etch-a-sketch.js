@@ -5,6 +5,7 @@ const changeGridBTN = document.querySelector("#changeGridBTN");
 const blackColorBTN = document.querySelector("#blackColorBTN");
 const randomColorBTN = document.querySelector("#randomColorBTN");
 const eraseColorBTN = document.querySelector("#eraseColorBTN");
+const widthAndHeight = container.offsetWidth;
 let squareAmount = 16;
 let userAmount;
 let penColor;
@@ -22,11 +23,20 @@ function fullGrid(e) {
       square = document.createElement("DIV");
       row.appendChild(square);
       square.className = "gridSquare";
-      square.style.width = "100%";
-      let height = 600 / parseInt(squareAmount);
-      square.style.height = `${height}px`;
+      let widthHeight = widthAndHeight / parseInt(squareAmount);
+      square.style.height = `${widthHeight}px`;
+      square.style.width = `${widthHeight}px`;
       square.style.backgroundColor = "rgb(255,255,255)";
     }
+  }
+}
+
+function color(e) {
+  for (let i = 0; i < gridSquare.length; i++) {
+    gridSquare[i].addEventListener("mouseover", () => {
+      penColor = e;
+      gridSquare[i].style.backgroundColor = `${penColor}`;
+    });
   }
 }
 /*
@@ -36,20 +46,10 @@ function fullGrid(e) {
   for the grid square. 
 */
 function mousePenColor() {
-  for (let i = 0; i < gridSquare.length; i++) {
-    gridSquare[i].addEventListener("mouseover", () => {
-      penColor = "rgb(0,0,0)";
-      gridSquare[i].style.backgroundColor = `${penColor}`;
-    });
-  }
+  color("rgb(0,0,0)");
 
   blackColorBTN.addEventListener("click", () => {
-    for (let i = 0; i < gridSquare.length; i++) {
-      gridSquare[i].addEventListener("mouseover", () => {
-        penColor = "rgb(0,0,0)";
-        gridSquare[i].style.backgroundColor = `${penColor}`;
-      });
-    }
+    color("rgb(0,0,0)");
   });
 
   randomColorBTN.addEventListener("click", () => {
@@ -62,12 +62,7 @@ function mousePenColor() {
   });
 
   eraseColorBTN.addEventListener("click", () => {
-    for (let i = 0; i < gridSquare.length; i++) {
-      gridSquare[i].addEventListener("mouseover", () => {
-        penColor = "rgb(255,255,255)";
-        gridSquare[i].style.backgroundColor = `${penColor}`;
-      });
-    }
+    color("rgb(255,255,255)");
   });
 }
 
